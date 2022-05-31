@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div id="content-wrap">
+    <div class="join-form">
+        <form action="/auth/email_send" method="post" id="email_send_form">
+            <input type="email" id="auth_email" name="auth_email" class="nes-input" required>
+            <button type="submit" class="nes-btn is-warning">인증메일 재발송</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    document.getElementById('email_send_form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const auth_email = e.target.auth_email.value;
+        // const auth_code = e.target.auth_code.value;
+        // console.log(e);
+        // console.log(auth_email,auth_code);
+        // try {
+            // const result = await axios.post('/auth/join_auth',{ auth_email, auth_code });
+            axios.post('/auth/email_send',{ auth_email })
+                .then((res)=>{
+                    console.log(res);
+                    alert(res.data);
+                    // const email = encodeURIComponent(auth_email);
+                    return window.location.href=`/auth/join_auth?auth_email=${encodeURIComponent(auth_email)}`;
+                })
+                .catch((err)=>{
+                    return alert(err.response.data);
+                });
+            // console.log(result,"결과");
+            // if(result.data.msg){
+            //     e.target.auth_code.value ='';
+            //     return alert(result.data.msg);
+            // }else{
+                
+            // }
+        // } catch (err) {
+        //     alert("에러가 발생하였습니다.");
+        //     console.log(err);
+        // }
+    });
+</script>
+{% endblock %}

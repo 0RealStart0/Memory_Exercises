@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="game-container">
+
+    <div class="nes-container ">
+        <form>
+            <div class="nes-container practice-choice">
+                <label>
+                    <input type="radio" class="nes-radio" name="game" checked />
+                    <span>단어</span>
+                </label>
+                <label>
+                    <input type="radio" class="nes-radio" name="game" />
+                    <span>목록</span>
+                </label>
+                <label>
+                    <input type="radio" class="nes-radio" name="game" />
+                    <span>사진</span>
+                </label>
+                <label>
+                    <input type="radio" class="nes-radio" name="game" />
+                    <span>숫자</span>
+                </label>
+                <label>
+                    <input type="radio" class="nes-radio" name="game" />
+                    <span>카드</span>
+                </label>
+                <label>
+                    <input type="radio" class="nes-radio" name="time" checked/>
+                    <span>1분</span>
+                </label>
+                <label>
+                    <input type="radio" class="nes-radio" name="time" />
+                    <span>5분</span>
+                </label>
+            </div>
+            <button type="button" class="nes-btn is-warning">시작하기</button>
+        </form>
+    </div>
+
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

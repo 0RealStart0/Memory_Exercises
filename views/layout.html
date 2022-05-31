@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link href="/reset.css" rel="stylesheet" />
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <link href="/ex.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="wrap">
+        <header>
+            <nav>
+                <ul class="nav-items">
+                    <li><a href="/">홈</a></li>
+                    <li><a href="/practice">연습</a></li>
+                    <li><a href="#competi">대결</a></li>
+                    <li><a href="/board">커뮤니티</a></li>
+                </ul>
+                <ul class="nav-member">
+                    {% if user and user.id %}
+                    <li><a href="/profile">프로필</a></li>
+                    <li>|</li>
+                    <li><a href="/auth/logout">로그아웃</a></li>
+                    {% else %}
+                    <li><a href="/login">로그인</a></li>
+                    <li>|</li>
+                    <li><a href="/join">회원가입</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    {% block script %}
+    {% endblock %}
+
+</body>
+
+</html>

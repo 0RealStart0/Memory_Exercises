@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div id="content-wrap">
+    <div class="join-form">
+        <div class="nes-container with-title is-rounded">
+            <h3 class="title">회원가입</h3>
+            <form id="join-form" action="/auth/join" method="post">
+                <div class="nes-field">
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" name="email" class="nes-input" required>
+                </div>
+                <div class="nes-field">
+                    <label for="nickname">닉네임</label>
+                    <input type="text" id="nick" name="nick" class="nes-input" required>
+                </div>
+                <div class="nes-field">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" name="password" class="nes-input" required>
+                </div>
+                <div class="nes-field">
+                    <label for="password2">비밀번호 확인</label>
+                    <input type="password" id="password2" class="nes-input" required>
+                </div>
+                <!-- <div style=" text-align: center;"> -->
+                    <button type="submit" class="nes-btn is-warning">가입하기</button>
+                    <!-- <button type="button" class="nes-btn is-error">취소</button> -->
+                    <!-- </div> -->
+                    <!-- <input type="hidden"> -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+<!-- 이메일 닉네임 비밀번호 등등 검증 스크립트  -->
+{% endblock %}
+

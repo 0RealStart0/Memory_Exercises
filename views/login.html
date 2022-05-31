@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div id="content-wrap">
+    <div class="login-form">
+        <section class="nes-container with-title is-rounded">
+            <h3 class="title">로그인</h3>
+            <form action="/auth/login" method="post">
+                <input type="email" id="login-email" name="email" class="nes-input" placeholder="E-MAIL">
+                <input type="password" id="login-password" name="password" class="nes-input" placeholder="PASSWORD">
+                <div id="login-middle">
+                    <label>
+                        <input type="checkbox" id="login-save" class="nes-checkbox" />
+                        <span>ID 저장</span>
+                    </label>
+                    <a id="login-find" href="#">PASSWORD 찾기</a>
+                </div>
+                <div class="login-button-set">
+                    <button type="submit" id="login-button" class="nes-btn is-primary">LOGIN</button>
+            </form>
+                <button type="button" id="join-button" onclick="location.href='/join'" class="nes-btn is-success">JOIN</button>
+            </div>
+            <a id="auth_mail_send" href="/auth/email_send">인증메일 재발송</a>
+            <span>/</span>
+            <a id="auth_mail_confirm" href="/auth/join_auth">이메일 인증하기</a>
+
+        </section>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    window.onload = () =>{
+        if(new URL(location.href).searchParams.get('loginError')){
+            alert(new URL(location.href).searchParams.get('loginError'));
+        }
+    };
+</script>
+
+{% endblock %}

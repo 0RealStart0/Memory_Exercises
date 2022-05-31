@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div id="content-wrap">
+    <div class="join-form">
+        <form action="/auth/join_auth" method="post" id="join_auth_form">
+            {% if auth_email %}
+            <input type="email" id="auth_email" name="auth_email" class="nes-input" value="{{auth_email}}" readonly
+                required>
+            {% else %}
+            <input type="email" id="auth_email" name="auth_email" class="nes-input" required>
+            {% endif %}
+            <input type="text" id="auth_code" name="auth_code" class="nes-input" required>
+            <button type="submit" class="nes-btn is-warning">인증하기</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    window.onload = ()=>{
+        // if(new URL(location.href).searchParams.get('email')){
+        //     document.getElementById('auth_email').value = new URL(location.href).searchParams.get('email');
+        // }
+        // const msg = '{{msg}}';
+        if('{{msg}}') alert('{{msg}}');
+    };
+    document.getElementById('join_auth_form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const auth_email = e.target.auth_email.value;
+        const auth_code = e.target.auth_code.value;
+        // console.log(e);
+        // console.log(auth_email,auth_code);
+        axios.post('/auth/join_auth',{ auth_email, auth_code })
+                .then((res)=>{
+                    console.log(res);
+                    alert(res.data);
+                    return window.location.href='/';
+                })
+                .catch((err)=>{
+                    console.log(err);
+                    e.target.auth_code.value = "";
+                    return alert(err.response.data);
+                });
+        // try {
+        //     const result = await axios.post('/auth/join_auth',{ auth_email, auth_code });
+        //     // console.log(result,"결과");
+        //     if(result.data.msg){
+        //         e.target.auth_code.value ='';
+        //         return alert(result.data.msg);
+        //     }else{
+        //         alert("회원가입이 완료 되었습니다.");
+        //         return window.location.href='/';
+        //     }
+        // } catch (err) {
+        //     alert("에러가 발생하였습니다.");
+        //     console.log(err);
+        // }
+    });
+</script>
+{% endblock %}

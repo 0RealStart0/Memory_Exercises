@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="game-container">
+
+    <div class="nes-container">
+        <div class="practice-status">
+            <button type="button" class="nes-btn btn-finish">완료</button>
+            <progress class="nes-progress time-progress" value="80" max="100"></progress>
+            <span class="time-num">04:37</span>
+        </div>
+
+        <div class="nes-container practice-list">
+
+        </div>
+        <div class="practice-arrow">
+            <!-- <button type="button" class="nes-btn is-warning">&lt;&lt;</button> -->
+            <button type="button" class="nes-btn is-warning">&lt;</button>
+            <button type="button" class="nes-btn is-warning">&gt;</button>
+            <!-- <button type="button" class="nes-btn is-warning">&gt;&gt;</button> -->
+        </div>
+
+    </div>
+
+
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

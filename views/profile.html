@@ -1,0 +1,139 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div id="content-wrap">
+    <div class="join-form">
+        <div>이메일 {{user_info.email}}</div>
+        <div class="nes-field">
+            <!-- <label for="nickname">닉네임</label> -->
+            <form id="change_nick" action="/auth/change_nick" method="post">
+                <input type="text" id="nick" name="nick" value="{{user_info.nick}}" class="nes-input"
+                    autocomplete="off">
+                <button type="submit" name="change_nick_btn" class="nes-btn is-disabled" disabled>변경하기</button>
+            </form>
+        </div>
+        <div>가입일자 {{user_info.createdAt}}</div>
+        <div><button id="change_pw_open" class="nes-btn is-primary">비밀번호 변경</button></div>
+        <div>
+            <form id="change_pw_form" action="" method="post" style="display:none">
+                <div class="nes-field">
+                    <label for="password">현재 비밀번호</label>
+                    <input type="password" id="current_pw" name="current_pw" class="nes-input" required>
+                </div>
+                <div class="nes-field">
+                    <label for="password">새 비밀번호</label>
+                    <input type="password" id="new_pw" name="new_pw" class="nes-input" required>
+                </div>
+                <div class="nes-field">
+                    <label for="password">새 비밀번호 확인</label>
+                    <input type="password" id="confirm_new_pw" class="nes-input" required>
+                </div>
+                <button type="submit" id="change_pw" class="nes-btn is-primary">변경하기</button>
+                <button type="reset" id="change_pw_cancel" class="nes-btn is-primary">취소</button>
+            </form>
+        </div>
+        <div><button id="withdraw_open" class="nes-btn is-primary">회원 탈퇴</button></div>
+        <div>
+            <form id="withdraw_form" action="" method="post" style="display: none;">
+                <div class="nes-field">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" name="password" class="nes-input" required>
+                </div>
+                <button type="submit" id="witdraw" class="nes-btn is-primary">탈퇴하기</button>
+                <button type="reset" id="withdraw_cancel" class="nes-btn is-primary">취소</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    document.getElementById('nick').addEventListener('keyup', (e) => {
+        // console.log('이벤트 발생',e.target.nextElementSibling ,e.target.classList);
+        if (e.target.value !== '{{user_info.nick}}') {
+            e.target.nextElementSibling.classList.replace('is-disabled', 'is-warning');
+            e.target.nextElementSibling.disabled = false;
+        } else {
+            e.target.nextElementSibling.classList.replace('is-warning', 'is-disabled');
+            e.target.nextElementSibling.disabled = true;
+        }
+    });
+
+    document.getElementById('change_nick').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nick = e.target.nick.value;
+        axios.post('/auth/change_nick', { nick })
+            .then((res) => {
+                console.log(res.data);
+                e.target.change_nick_btn.disabled = true;
+                e.target.change_nick_btn.classList.replace('is-warning', 'is-disabled');
+                alert(res.data);
+                console.log(e.target);
+                // return window.location.href=`/profile`;
+            })
+            .catch((e) => {
+                alert(e, '예기치 못한 에러가 발생하였습니다.');
+            });
+    });
+
+    document.getElementById('change_pw_form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        // console.log('라스트',e.target.lastElementChild);
+
+        if (confirm('비밀번호를 변경하시겠습니까?')) {
+            const current_pw = e.target.current_pw.value;
+            const new_pw = e.target.new_pw.value;
+            axios.post('/auth/change_pw', { current_pw, new_pw })
+                .then((res) => {
+                    alert(res.data);
+                    e.target.lastElementChild.click();
+                })
+                .catch((err) => {
+                    alert(err.response.data);
+                });
+        }
+    });
+
+    document.getElementById('withdraw_form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (confirm('회원탈퇴?')) {
+            const password = e.target.password.value;
+            axios.post('/auth/withdraw', { password })
+                .then((res) => {
+                    alert(res.data);
+                    return window.location.href = `/`;
+                })
+                .catch((err) => {
+                    alert(err.response.data);
+                });
+        }
+
+    });
+
+    document.getElementById('change_pw_open').addEventListener('click', (e) => {
+        document.getElementById('change_pw_form').style.display = "";
+        e.target.style.display = "none";
+        // console.log(e,e.target);
+    });
+
+    document.getElementById('change_pw_cancel').addEventListener('click', (e) => {
+        // e.preventDefault();
+        document.getElementById('change_pw_form').style.display = "none";
+        document.getElementById('change_pw_open').style.display = "";
+
+    });
+
+    document.getElementById('withdraw_open').addEventListener('click', (e) => {
+        document.getElementById('withdraw_form').style.display = "";
+        e.target.style.display = "none";
+    });
+    document.getElementById('withdraw_cancel').addEventListener('click', (e) => {
+        document.getElementById('withdraw_form').style.display = "none";
+        document.getElementById('withdraw_open').style.display = "";
+    });
+
+
+</script>
+{% endblock %}

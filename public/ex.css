@@ -1,0 +1,296 @@
+@font-face {
+    font-family: 'NeoDunggeunmo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.3/NeoDunggeunmo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+*{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    /* letter-spacing: 0.05em; */
+}
+
+.nes-btn,
+.nes-input,
+.nes-select select,
+.nes-select,
+.nes-table.is-bordered,
+.nes-table.is-bordered.is-dark,
+.nes-progress,
+.nes-container.is-rounded,
+.nes-textarea {
+    border-image-repeat: stretch;
+}
+.nes-container.with-title>.title,.nes-input{
+    background-color: #f0f3f4;  
+    /* margin-bottom:0px;  */
+}
+
+body {
+    font-family: 'NeoDunggeunmo', sans-serif;
+    /* font-size: 1rem; */
+    /* background-color: #f0f3f4; */
+    color: #212529;
+    background-color: #f0f3f4;
+}
+
+
+li { list-style: none; }
+a { text-decoration: none; }
+h1, h2, h3, h4, h5, h6, p { margin: 10px 5px;}
+h1 { font-size: 1.8em; }
+
+/* 헤더 및 네비게이션 */
+header {
+    width: 100%;
+    height: 60px;
+    z-index: 2000;
+    border-bottom: 4px solid #D3D3D3;
+    background-color: #f0f3f4;
+    overflow: hidden;
+}
+header li{
+    display: inline-block;  /* 가로정렬 */  
+}
+nav {
+    width: 980px;
+    margin: 0 auto;
+}
+
+.nav-items {
+    float: left;
+}
+.nav-items > li{
+    padding-right:30px
+}
+.nav-member {
+    float: right;
+}
+.nav-member > li, .nav-items > li{
+    line-height: 60px;
+}
+/* 본문 설정 */
+#content-wrap {
+    width: 980px;
+    /* height: 100vh; */
+    margin: 0 auto;
+    /* text-align: center;
+    vertical-align:top; */
+    /* overflow: hidden; */
+    /* display: flex; */
+    /* justify-content: space-around; */
+    /* flex-wrap: wrap; */
+    /* align-content: space-around; */
+}
+
+/* 로그인 폼 */
+.login-form{
+    width: 458px;
+    margin: 100px auto;
+    /* height: 300px; */
+    /* margin : auto; */
+    /* margin-top:20vh; */
+}
+
+#login-email{
+    margin-bottom: 20px;
+    margin-top:20px;
+    /* margin-right: -40px; */
+    display:block;
+}
+#login-password{
+    margin-bottom:10px;
+}
+#login-middle{
+    display: inline;
+}
+
+#login-save{
+    margin-left:19px; 
+    /* display: inline; */
+    /* float:left; */
+}
+
+#login-find{
+    /* display: inline-block; */
+    float:right;
+}
+
+#login-button{
+    width: 46%;
+}
+
+#join-button{
+    width:46%;
+    float:right;
+}
+
+/* 회원가입 */
+
+.join-form{
+    width :460px;
+    margin:100px auto;
+}
+
+.join-form > .nes-field{
+    margin-bottom:15px;
+}
+
+.join-form button{
+    /* width: 30%; */
+    /* margin:15px auto;*/
+    width: 98%;
+    margin-top: 15px;
+    /* margin-right:15px; */
+    /* text-align: ri; */
+    /* display: inline-block; */
+}
+
+/* 게시판*/
+   
+.table1 > thead{
+    text-align: center;
+}
+ /* 게시판 숫자 페이지 */
+ .board_pagination_container{
+    /* display: -ms-flexbox; */
+    /* display: -webkit-box; */
+    display: flex;
+    /* -webkit-box-flex: 1; */
+    /* -ms-flex-positive: 1; */
+    flex-grow: 1;
+    -webkit-box-pack: center;
+    /* -ms-flex-pack: center; */
+    justify-content: center;
+    margin: 25px 0;
+    /* height: 52px; */
+ }
+ .board_pagination_page ul{
+    margin:0;
+}
+.board_pagination_page li{
+    display: inline-block;
+    margin:0;
+    line-height: 52px;
+}
+/*게시판 검색창*/
+.board_search_container{
+    display: flex;
+    /* -webkit-box-flex: 1; */
+    /* -ms-flex-positive: 1; */
+    flex-grow: 1;
+    -webkit-box-pack: center;
+    /* -ms-flex-pack: center; */
+    /* justify-content: center; */
+    margin: 25px 0;
+    /* height: 52px; */
+}
+.board_search_container > *{
+    margin-right: 16px;
+}
+
+.board_search_list{
+    width:145px;
+}
+.board_search_input{
+    width:300px;
+}
+
+/* 게시판 글쓰기 창 */
+
+
+/* 전체 넓이 */
+/* .container{
+    max-width: 1200px;
+    margin : 0 auto;
+    overflow: hidden;
+} */
+
+/* 연습하기 */
+/* .practice-option{
+    width: 148px;
+    float: left;
+}
+
+.practice-choice{
+    margin : 0 0 4px;
+    
+}
+
+.practice-main{
+    width:976px;
+    margin-left: 4px;
+    float: left;
+    overflow: hidden;
+}
+
+.practice-word{
+    width:896px;
+} */
+
+/* 전체 틀 이랑 타이머 버튼 등등 */
+.game-container{
+    max-width: 980px;
+    margin : 10px auto;
+    /* overflow: hidden; */
+}
+.practice-status{
+    /* background-color: black; */
+    /* height: 48px; */
+    text-align: center;
+    margin-bottom: 16px;
+}
+.btn-finish{
+    float: left;
+    /* position: relative;
+    top:-22px;
+    left:0px; */
+}
+.time-progress{
+    width: 70%;
+    height: 44px;
+}
+.time-num{
+    font-size:38px;
+    float: right;
+}
+
+.practice-arrow{
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 넘기기 버튼 */
+.practice-arrow .nes-btn{
+    /* margin:0 10px; */
+    margin-left: 20px;
+    margin-right: 20px;
+    min-width: 44px;
+}
+
+/* 단어 부분 */
+.practice-word{
+    /* margin-top: 16px; */
+    /* margin-bottom: 20px; */
+    width:100%;
+    /* background-color : #f0f3f4 */
+} 
+
+/* 카드부분 */
+.practice-card{
+    width: 100%;
+    text-align: center;
+}
+.practice-card span{
+    font-size: 32px;
+    line-height: 100%;
+}
+
+/* 숫자부분 */
+.practice-number{
+    width: 100%;
+    
+}
